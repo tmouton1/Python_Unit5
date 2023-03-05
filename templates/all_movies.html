@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+{% extends 'base.html' %} 
+{% block title %} All Movies {% endblock %}
+
+
+
+{% block body %}
+
+{% for movie in movies %}
+
+
+  <style>
+    table, th {
+      border:1px solid black;
+      background-color: black;
+      opacity: 70%;
+      
+    }
+    td{
+      color: white;
+      opacity: 200%;
+      font-weight: bolder;
+    }
+    
+    </style>
+    <body>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/movies">View all movies</a></li>
+      <li><a href="/users">View all users</a></li>
+      
+  </ul>
+
+      <ul>
+
+<a href="/movies/{{ movies }}">
+
+</li>
+
+      
+
+    <table style="width:100%">
+<tr>
+<td>Movie Title</td><br>
+<td>Movie Release Date</td>
+<td>Movie Rating</td>
+      </tr>
+      <tr>
+        <td>{{movie.title}}</td>
+        <td>{{movie.release_date}}</td>
+        <img src="{{ movie.poster_path }}" width="166px" height="249px">
+        <td> </td>
+      </tr>
+    </table>
+
+
+
+</ul>
+
+{% endfor %}
+
+{% endblock body %}
+</body>
+</html>
