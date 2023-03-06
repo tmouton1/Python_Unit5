@@ -26,8 +26,17 @@ Welcome to your personal page, {{user.email}}! <br><br>
 
 <h3>Your info:</h3>
 Email: {{user.email}}
-<h3>Your Ratings:</h3>
-Ratings: 
+<h3>Your Movie Ratings:</h3>
+
+
+<a href="{{ url_for('show_rating') }}">
+</a>
+
+{% for rating in user.ratings %}
+
+{{rating.movie.title}}:{{rating.score}}
+
+{% endfor %}
 
 {% endblock %}
 

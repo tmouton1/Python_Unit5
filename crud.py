@@ -22,6 +22,8 @@ def get_user_by_email(email):
 
     return User.query.filter(User.email == email).first()
 
+# ==========================================================cc
+
 def create_movie(title, overview,release_date,poster_path):
 
 
@@ -36,7 +38,7 @@ def get_movies():
 # =======================================
 def get_movie_by_id(movie_id):
     
-    return Movie.query.get(1)
+    return Movie.query.get(movie_id)
 
 # ========================================
 

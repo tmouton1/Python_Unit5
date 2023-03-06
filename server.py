@@ -15,12 +15,45 @@ def homepage():
     """View homepage."""
 
     return render_template('homepage.html')
+# ========================================
+
+# @app.route("/movies", methods=['POST'])
+# def add_movie(title,overview,release_date,poster_path):
+#     "add new movie"
+
+#     logged_in_email = session.get("user email")     
+#     new_movie = request.form.get("movie")
+
+#     if logged_in_email is None:
+#         flash("Please login to create a movie.")
+#     elif not new_movie:
+#         flash("This movie is already in our database, please visit all movies to rate it, or add a new movie.")
+#     else:
+#         user = crud.get_user_by_email(logged_in_email)
+
+
+#         movie = crud.create_movie()
+
+#         with app.app_context():
+#             db.session.add(new_movie)
+#             db.session.commit()
+    
+#     return redirect("all_movies.html"logged}
+   
+
+#     movies = crud.create_movie()
+
+#     return render_template("user_details.html", movies=movies)
+
+
+# ====================================
 
 @app.route("/movies")
 def all_movies():
     """View all movies."""
     
     movies = crud.get_movies()
+    
   
     return render_template("all_movies.html", movies=movies)
 
@@ -52,11 +85,14 @@ def show_user(user_id):
 
 
 @app.route("/users/rating")
-def show_rating(rating_id):
+def show_rating(score):
      
-    rating = crud.get_rating(rating_id)
+    rating = crud.get_rating(score)
+    with app.app_context():
+        db.session.append(rating)
+        db.session.commit()
 
-    return render_template("user_details.html",rating=rating)
+    return render_template("user_details.html",score=score)
 
 
 
@@ -109,7 +145,7 @@ def update_rating():
     return "Success"
 
 
-@app.route("/movies/<movie_id>/ratings", methods=["POST"])
+@app.route("/movies/<movie_id>", methods=["POST"])
 def create_rating(movie_id):
     """Create a new rating for the movie."""
 

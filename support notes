@@ -1,0 +1,7 @@
+- Json list of movies does not populate.
+- I believe "def get_movie_by_id(movie_id):
+return Movie.query.get(1)" is the reason only lists one movie
+
+
+
+- 

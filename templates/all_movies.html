@@ -15,7 +15,6 @@
 
 {% block body %}
 
-{% for movie in movies %}
 
 
   <style>
@@ -37,12 +36,16 @@
         <li><a href="/">Home</a></li>
         <li><a href="/movies">View all movies</a></li>
       <li><a href="/users">View all users</a></li>
+     
       
   </ul>
 
-      <ul>
+    <ul>
 
-<a href="/movies/{{ movies }}">
+      {% for movie in movies %}
+      <li>
+
+<a href="/movies/{{ movie.movie_id }}">
 
 </li>
 
@@ -63,10 +66,10 @@
     </table>
 
 
+    {% endfor %}
 
 </ul>
 
-{% endfor %}
 
 {% endblock body %}
 </body>
